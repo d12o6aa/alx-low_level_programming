@@ -10,18 +10,12 @@
 
 list_t *add_node(list_t **head, const char *str)
 {
-	list_t *ptr = head;
-	list_t *current = malloc(sizeof(list_t));
+	list_t *newptr = (list_t *)malloc(sizeof(list_t));
 
-	current->str = str;
-	current->next = NULL;
+	newptr->str = str;
+	newptr->next = (*head);
 
-	while (ptr)
-	{
-		ptr = ptr->next;
-	}
+	(*head) = newptr;
 
-	ptr->next = current;
-
-	return (current);
+	return (*head);
 }
