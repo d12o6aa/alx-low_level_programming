@@ -1,0 +1,448 @@
+#include "main.h"
+
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+/**
+ * _strlen - length of a string
+ *@s: string
+ *
+ * Return: int.
+ */
+
+int _strlen(char *s)
+{
+	int i = 0;
+
+	while (*(s + i) != '\0')
+	{
+		i++;
+	}
+
+	return (i);
+}
+
+/**
+ * _puts - prints a string
+ *@str: string
+ *
+ * Return: void.
+ */
+
+void _puts(char *str)
+{
+	int i = 0;
+
+	while (*(str + i) != '\0')
+	{
+		printf("%c", *(str + i));
+		i++;
+	}
+	printf("\n");
+}
+
+/**
+ * _strncpy - Write a function that copies a string, with number of bytes
+ * @dest: This is the output dest
+ * @src: This is the input source
+ * @n: This is the number of bytes to copy
+ *
+ *Return: Copied string with the number of bytes
+ */
+
+char *_strncpy(char *dest, char *src, int n)
+{
+	int index;
+
+	for (index = 0; index < n && src[index] != '\0' ; index++)
+	{
+		dest[index] = src[index];
+	}
+	for (; index  < n; index++)
+	{
+		dest[index] = '\0';
+	}
+	return (dest);
+}
+
+/**
+ * _strncat - Write a function that concatenates two strings. it will use at
+ *            most n bytes from src
+ *
+ * @dest: This is the output  dest
+ * @src: This is the input src
+ * @n: This is the number bytes fro src
+ *
+ * Return: This is my return
+ */
+char *_strncat(char *dest, char *src, int n)
+{
+	int index, count;
+
+	for (index = 0; dest[index] != '\0'; index++)
+		;
+	for (count = 0; count < n && src[count] != '\0'; count++)
+	{
+		dest[index] = src[count];
+		index++;
+	}
+	if (count < n)
+	{
+	dest[index] = '\0';
+	}
+	return (dest);
+}
+
+/**
+ * _strcmp - Write a function that compares two strings.
+ *
+ * @s1: This is the input string
+ * @s2: This is the input string
+ *
+ * Return: If the strings are equals return "0", if not return other number
+ */
+
+int _strcmp(char *s1, char *s2)
+{
+	for (; (*s1 != '\0' && *s2 != '\0') && (*s1 == *s2); s1++, s2++)
+		;
+	if (*s1 == *s2)
+	{
+		return (0);
+	}
+	return (*s1 - *s2);
+}
+
+/**
+ * _strncat - Write a function that concatenates two strings. it will use at
+ *            most n bytes from src
+ *
+ * @dest: This is the output  dest
+ * @src: This is the input src
+ * @n: This is the number bytes fro src
+ *
+ * Return: This is my return
+ */
+char *_strncat(char *dest, char *src, int n)
+{
+	int index, count;
+
+	for (index = 0; dest[index] != '\0'; index++)
+		;
+	for (count = 0; count < n && src[count] != '\0'; count++)
+	{
+		dest[index] = src[count];
+		index++;
+	}
+	if (count < n)
+	{
+	dest[index] = '\0';
+	}
+	return (dest);
+}
+
+/**
+ * _strncpy - Write a function that copies a string, with number of bytes
+ * @dest: This is the output dest
+ * @src: This is the input source
+ * @n: This is the number of bytes to copy
+ *
+ *Return: Copied string with the number of bytes
+ */
+
+char *_strncpy(char *dest, char *src, int n)
+{
+	int index;
+
+	for (index = 0; index < n && src[index] != '\0' ; index++)
+	{
+		dest[index] = src[index];
+	}
+	for (; index  < n; index++)
+	{
+		dest[index] = '\0';
+	}
+	return (dest);
+}
+
+/**
+*_strchr - print match
+*@s: array
+*@c: char
+*
+*Return: char return
+*/
+char *_strchr(char *s, char c)
+{
+	int i = 0;
+
+	while (s[i] != 0)
+	{
+		if (s[i] == c)
+			return (&s[i]);
+		i++;
+	}
+	if (s[i] == c)
+		return (&s[i]);
+	return ('\0');
+}
+
+/**
+* _strstr - locates a substring.
+* @haystack: char array
+* @needle: char array (keyword)
+*
+* Return: array
+*/
+char *_strstr(char *haystack, char *needle)
+{
+	while (*haystack != '\0')
+	{
+		char *duplicate = haystack;
+
+		while (*haystack == *needle && *haystack != '\0' && *needle != '\0')
+		{
+			needle++;
+			haystack++;
+		}
+		if (!*needle != '\0')
+		{
+			return (duplicate);
+		}
+		haystack++;
+	}
+	return (0);
+}
+
+/**
+* _memcpy - copy memory area.
+* @dest: copied
+* @src: original
+* @n: limit
+* Return: pointer
+*/
+char *_memcpy(char *dest, char *src, unsigned int n)
+{
+	char *b = src;
+	char *a = dest;
+
+	while (n != 0)
+	{
+	*a++ = *b++;
+	n--;
+	}
+
+	return (dest);
+}
+
+/**
+* _strpbrk - find character in text
+* @s: string
+* @accept: character to search
+* Return: char
+*/
+char *_strpbrk(char *s, char *accept)
+{
+	int a, b;
+
+	for (a = 0 ; *(s + a) ; a++)
+	{
+		for (b = 0 ; *(accept + b) ; b++)
+		{
+			if (*(accept + b) == s[a])
+			{
+				return (s + a);
+			}
+		}
+		if (*(accept + b) == s[a])
+		{
+			return (s + a);
+		}
+	}
+	return (0);
+}
+
+/**
+* _strspn - get the length of sub-text
+* of a prefix substring.
+* @s: char array
+* @accept: char array
+* Return: break position
+*/
+unsigned int _strspn(char *s, char *accept)
+{
+	int letter;
+	int pos = 0;
+
+	while (s[pos])
+	{
+		for (letter = 0; accept[letter]; letter++)
+		{
+			if (accept[letter] == s[pos])
+			{
+				break;
+			}
+		}
+		if (!accept[letter])
+		{
+			break;
+		}
+		pos++;
+	}
+	return (pos);
+}
+
+/**
+* _memset - fill memory .
+* @s: pointer
+* @b: hexadecimal number
+* @n: n bytes
+* Return: pointer
+*/
+char *_memset(char *s, char b, unsigned int n)
+{
+	unsigned char *u = (unsigned char *) s;
+
+	while (n-- > 0x00)
+	{
+		*u++ = b;
+	}
+	return (s);
+}
+
+/**
+ * _isupper - checks for uppercase character
+ *@c: int
+ *Return: 1 if upper, 0 other
+ */
+
+int _isupper(int c)
+{
+char alpha;
+for (alpha = 'A'; alpha <= 'Z'; alpha++)
+{
+	if (c == alpha)
+		return (1);
+}
+
+return (0);
+}
+
+/**
+ *_isdigit - checks for a digit
+ *@c:int
+ *Return: 1 if digit, 0 otherwise
+ */
+
+int _isdigit(int c)
+{
+char digit;
+for (digit = '0'; digit <= '9'; digit++)
+{
+	if (digit == c)
+		return (1);
+}
+return (0);
+}
+
+/**
+ * _islower - checks for lowercase letters
+ * @c: character to check
+ *
+ * Return: 1 if is success
+ */
+int _islower(int c)
+{
+	if (c >= 'a' && c <= 'z')
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
+}
+
+/**
+ * _isalpha - checks for letters
+ * @c: character to check
+ *
+ * Return: 1 if is success
+ */
+int _isalpha(int c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
+}
+
+/**
+ * _abs - return absolute number
+ * @num: number to check
+ *
+ * Return: the absolute number
+ */
+int _abs(int num)
+{
+	int num_abs;
+
+	num_abs = abs(num);
+	return (num_abs);
+}
+
+/**
+ * _atoi - print the integer of a char.
+ * @s:  tested char
+ * Return: integer.
+ */
+int _atoi(char *s)
+{
+	unsigned int counter, i, j, k, length, num, l;
+	int aux;
+
+	aux = 1;
+	counter = 0;
+	num = 0;
+
+	while (*(s + counter) != '\0')
+		counter++;
+	for (i = 0; i < counter; i++)
+	{
+		if (*(s + i) <= '9' && *(s + i) >= '0')
+		break;
+	}
+	for (j = i; j < counter; j++)
+	{
+		if (!(*(s + j) <= '9' && *(s + j) >= '0'))
+			break;
+	}
+
+	for (k = 0; k < i; k++)
+	{
+		if (*(s + k) == '-')
+			aux = -aux;
+	}
+	length = j - i;
+	l = i;
+		while (length >= 1)
+	{
+		num = num * 10 + (*(s + l) - '0');
+		l++;
+		length--;
+	}
+	return (num * aux);
+}
