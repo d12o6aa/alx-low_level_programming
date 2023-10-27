@@ -1,6 +1,6 @@
 CC=gcc
-SRC=main.c school.c
-OBJ=main.o school.o
+SRC=%.c
+OBJ=%.o
 NAME=school
 
 all:$(NAME)
