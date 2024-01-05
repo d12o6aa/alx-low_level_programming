@@ -1,1 +1,3 @@
-readmi
+# pointers 
+## arrays
+### strings
